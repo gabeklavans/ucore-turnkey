@@ -113,11 +113,9 @@ def main():
     with open(butane_file_path, "w", encoding="utf-8") as butane_file:
         butane_file.write(yaml.dump(butane_yaml))
 
-    ignition_file_name = "config.ign"
+    ignition_file_path = "/data/config.ign"
     try:
-        with open(
-            f"/data/{ignition_file_name}", "w", encoding="utf-8"
-        ) as ignition_file:
+        with open(ignition_file_path, "w", encoding="utf-8") as ignition_file:
             subprocess.run(
                 [
                     "butane",
@@ -136,7 +134,7 @@ def main():
         style="fg:green",
     )
     questionary.print(
-        f"sudo coreos-installer install --ignition-file {ignition_file_name} <path-to-your-storage-device>\n",
+        f"sudo coreos-installer install -i {ignition_file_path} <path-to-your-storage-device>\n",
     )
 
 
