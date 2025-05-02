@@ -109,19 +109,21 @@ def main():
 
     update_butane(butane_yaml, username, password_hash, version, pubkeys)
 
-    butane_file_name = "ucore-autorebase-custom.butane"
-    with open(butane_file_name, "w", encoding="utf-8") as butane_file:
+    butane_file_path = "/data/ucore-autorebase-custom.butane"
+    with open(butane_file_path, "w", encoding="utf-8") as butane_file:
         butane_file.write(yaml.dump(butane_yaml))
 
     ignition_file_name = "config.ign"
     try:
-        with open(ignition_file_name, "w", encoding="utf-8") as ignition_file:
+        with open(
+            f"/data/{ignition_file_name}", "w", encoding="utf-8"
+        ) as ignition_file:
             subprocess.run(
                 [
                     "butane",
                     "--pretty",
                     "--strict",
-                    butane_file_name,
+                    butane_file_path,
                 ],
                 check=True,
                 stdout=ignition_file,
@@ -129,22 +131,13 @@ def main():
     except Exception as exc:
         raise Exception("Error during butane transpilation.") from exc
 
-    # start a webserver in the background
-    port = "8080"
-    subprocess.Popen(
-        ["python3", "-m", "http.server", port],
-        close_fds=True,
-        stdout=subprocess.DEVNULL,
-    )
-
     questionary.print(
-        "There is now a webserver running locally that will serve your custom ignition config. To continue the ucore installtion with your config, run the following command:\n",
+        "You should now have an ignition config in your file system if you created the proper volume mount according to the ucore-turnkey README. To continue the ucore installtion with your config, run the following command:\n",
         style="fg:green",
     )
     questionary.print(
-        f"sudo coreos-installer install --ignition-url localhost:{port}/{ignition_file_name} --insecure-ignition <path-to-your-storage-device>",
+        f"sudo coreos-installer install --ignition-file {ignition_file_name} <path-to-your-storage-device>\n",
     )
-    print()
 
 
 if __name__ == "__main__":
