@@ -56,7 +56,7 @@ def str_presenter(dumper, data):
 
 def main():
     username = questionary.text("Enter your desired account username").ask()
-    password = questionary.text("Enter your desired account password").ask()
+    password = questionary.password("Enter your desired account password").ask()
     password_hash = ""
     try:
         password_hash = (
