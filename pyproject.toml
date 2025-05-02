@@ -1,0 +1,18 @@
+[project]
+name = "ucore-turnkey"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pygithub>=2.6.1",
+    "pyyaml>=6.0.2",
+    "questionary>=2.1.0",
+    "requests>=2.32.3",
+]
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+    "pylint>=3.3.6",
+]
