@@ -73,7 +73,7 @@ def main():
     ).ask()
 
     # I'm pretty sure just instantiating the Github object doesn't make any HTTP request; might need to confirm that, though.
-    # I want to avoid making any unecessary requests.
+    # I want to avoid making any unnecessary requests.
     gh = Github()
     pubkeys = []
     while True:
