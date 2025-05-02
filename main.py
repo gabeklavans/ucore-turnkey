@@ -134,7 +134,11 @@ def main():
         style="fg:green",
     )
     questionary.print(
-        f"sudo coreos-installer install -i {ignition_file_path} <path-to-your-storage-device>\n",
+        f"sudo coreos-installer install -i .{ignition_file_path} /dev/<your-storage-device>\n",
+    )
+    questionary.print(
+        "If you're unsure of your storage device name, try running lsblk to find it.",
+        style="fg:yellow",
     )
 
 
