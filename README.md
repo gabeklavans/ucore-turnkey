@@ -9,4 +9,4 @@ sh <(curl -L turn.dabe.tech)
 ```
 
 > [!CAUTION]
-> *Never* run scripts directly downloaded from the internet! Check the contents of the script first with `curl -L turn.dabe.tech` and you should see a relatively simple one-line command (along with a shebang).
+> *Never* blindly run scripts directly downloaded from the internet! Check the contents of the script first with `curl -L turn.dabe.tech` and you should see a relatively simple one-line command (along with a shebang).
