@@ -31,6 +31,7 @@ def update_butane(
     """
 
     butane_yaml["passwd"]["users"][0]["name"] = username
+    butane_yaml["passwd"]["users"][0]["groups"] = ["wheel"]
     butane_yaml["passwd"]["users"][0]["password_hash"] = password_hash
     if len(pubkeys) > 0:
         butane_yaml["passwd"]["users"][0]["ssh_authorized_keys"] = pubkeys
