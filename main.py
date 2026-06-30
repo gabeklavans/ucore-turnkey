@@ -131,7 +131,7 @@ def main():
         raise Exception("Error during butane transpilation.") from exc
 
     questionary.print(
-        "You should now have an ignition config in your file system if you created the proper volume mount according to the ucore-turnkey README. To continue the ucore installtion with your config, run the following command:\n",
+        "You should now have an ignition config in the 'data' directory in your current directory. To continue the ucore installtion with your config, run the following command:\n",
         style="fg:green",
     )
     questionary.print(
